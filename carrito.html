@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SendMas | Carrito</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <aside>
+            <header>
+                <h1 class="logo">SendMas</h1>
+            </header>
+            <nav>
+                <ul>
+                    <li>
+                        <a class="boton-menu" href="./index.html">
+                            <i class="bi bi-arrow-return-left"></i> Volver a la tienda
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div id="user-session" class="user-session">
+                <button id="login-btn" class="boton-menu">
+                    <i class="bi bi-google"></i> Iniciar Sesión
+                </button>
+
+                <div id="user-info" class="user-info disabled">
+                    <img id="user-img" src="" alt="avatar" class="user-img-mini">
+                    <div class="user-data">
+                        <span id="user-name" class="user-name-text"></span>
+                        <button id="logout-btn" class="boton-salir">
+                            <small>Cerrar sesión</small> <i class="bi bi-box-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <h2 class="titulo-principal">Tu Carrito</h2>
+            <div class="contenedor-carrito">
+                <p id="carrito-vacio" class="carrito-vacio">Tu carrito está vacío. 🙁</p>
+                
+                <div id="carrito-productos" class="carrito-productos disabled"></div>
+
+                <div id="carrito-acciones" class="carrito-acciones disabled">
+                    <button id="carrito-acciones-vaciar" class="carrito-acciones-vaciar">Vaciar carrito</button>
+                    <div class="carrito-acciones-derecha">
+                        <div class="carrito-acciones-total">
+                            <p>Total:</p>
+                            <p id="total">$0</p>
+                        </div>
+                        <button id="carrito-acciones-comprar" class="carrito-acciones-comprar">Comprar ahora</button>
+                    </div>
+                </div>
+                <p id="carrito-comprado" class="carrito-comprado disabled">¡Muchas gracias por tu compra! 😊</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCXUmyqr0lvg6q-rZOgD7UMoemFhwUbtfs",
+            authDomain: "send-mas-tienda.firebaseapp.com",
+            projectId: "send-mas-tienda",
+            storageBucket: "send-mas-tienda.firebasestorage.app",
+            messagingSenderId: "259268267281",
+            appId: "1:259268267281:web:0513c261b0fd64170810b0"
+        };
+        // Inicializar
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="./js/carrito.js"></script>
+</body>
+</html> 
