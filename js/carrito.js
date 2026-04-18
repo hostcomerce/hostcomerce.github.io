@@ -1,7 +1,7 @@
 /** --- VARIABLES Y ESTADO --- **/
 let productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
-// URL de tu ÚLTIMA implementación (asegúrate de que termine en /exec)
-const urlAPI = "https://script.google.com/macros/s/AKfycbyyu0BpI2mJaXqCFfXWv_Z77eB7KBbSmol_DsBgQSjc9iaTxrZ_NwfIk6vxHIM7f74WBg/exec";
+// URL de tu ÚLTIMA implementación (asegurate de que termine en /exec)
+const urlAPI = "https://script.google.com/macros/s/AKfycby2i7U8zchyJb0sF1kZHyFOPqMmmLkqIrtbihkpmr3hFifArMLfqhG5PTDLoMHSgm6-UA/exec";
 
 // Referencias al DOM
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
@@ -128,10 +128,10 @@ async function procesarEnvioFinal(formValues, user) {
         didOpen: () => Swal.showLoading() 
     });
 
-    // IMPORTANTE: Los nombres de las propiedades deben coincidir con lo que el Apps Script espera
+    // Mapeamos los items exactamente como los pide la API de Mercado Pago
     const pedidoCompleto = {
         items: productosEnCarrito.map(p => ({ 
-            id: p.id, 
+            id: p.id.toString(), 
             nombre: p.nombre, 
             cantidad: parseInt(p.cantidad),
             precio: parseFloat(p.precio) 
@@ -148,7 +148,6 @@ async function procesarEnvioFinal(formValues, user) {
     try {
         const response = await fetch(urlAPI, {
             method: 'POST',
-            mode: 'cors', // Forzamos CORS para recibir la respuesta
             body: JSON.stringify(pedidoCompleto)
         });
 
@@ -157,19 +156,19 @@ async function procesarEnvioFinal(formValues, user) {
         const resultado = await response.json();
 
         if (resultado.init_point) {
-            // Vaciamos el carrito local antes de irnos
+            // Vaciamos el carrito local
             localStorage.removeItem("productos-en-carrito");
-            // REDIRECCIÓN A MERCADO PAGO
+            // Redirección
             window.location.href = resultado.init_point;
         } else if (resultado.error) {
             Swal.fire("Problema con el pedido", resultado.detalles || resultado.error, "warning");
         }
 
     } catch (error) {
-        console.error("Error al conectar con el servidor:", error);
-        Swal.fire("Error", "No pudimos conectar con el servidor de pagos. Revisa tu conexión.", "error");
+        console.error("Error al conectar:", error);
+        Swal.fire("Error", "No pudimos conectar con el servidor. Revisá tu conexión.", "error");
     }
 }
 
-// Carga inicial
+// Inicialización
 cargarProductosCarrito();
