@@ -1,0 +1,322 @@
+:root {
+    --clr-main: #131313; /* Un toque más oscuro para que resalte el rojo */
+    --clr-white: #ececec;
+    --clr-red: #e61e1e;
+    --clr-red-hover: #b31414;
+    --clr-gray: #444;
+    --clr-card: #1f1f1f;
+    --transition: all .2s ease;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body { 
+    background-color: var(--clr-main); 
+    color: var(--clr-white); 
+    min-height: 100vh;
+}
+
+.wrapper { 
+    display: grid; 
+    grid-template-columns: 280px 1fr; /* Ancho fijo para el menú para evitar saltos */
+}
+
+/* --- ASIDE --- */
+aside { 
+    padding: 2rem; 
+    background-color: #000; 
+    height: 100vh; 
+    position: sticky; 
+    top: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empuja el login hacia abajo */
+}
+
+.logo { 
+    color: var(--clr-red); 
+    margin-bottom: 2.5rem; 
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.menu { 
+    list-style: none; 
+    display: flex; 
+    flex-direction: column; 
+    gap: .5rem; 
+}
+
+.boton-menu { 
+    background: none; 
+    border: 0; 
+    color: var(--clr-white); 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center;
+    gap: 1rem; 
+    padding: .75rem 1rem;
+    font-size: 1rem; 
+    width: 100%; 
+    text-align: left; 
+    text-decoration: none;
+    border-radius: .5rem;
+    transition: var(--transition);
+}
+
+.boton-menu:hover {
+    background-color: var(--clr-gray);
+}
+
+.boton-menu.active { 
+    color: var(--clr-red); 
+    background-color: #1a1a1a;
+    font-weight: 600;
+}
+
+/* --- PRODUCTOS --- */
+main { padding: 2rem; }
+
+.titulo-principal {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.contenedor-productos { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); 
+    gap: 1.5rem; 
+}
+
+.producto { 
+    background-color: var(--clr-card); 
+    border-radius: 1rem; 
+    padding: 1rem; 
+    border: 1px solid var(--clr-gray); 
+    transition: transform .2s ease, border-color .2s ease;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    border-color: var(--clr-red);
+}
+
+.producto-imagen { 
+    width: 100%; 
+    aspect-ratio: 1/1; /* Asegura que todas las imágenes midan lo mismo */
+    object-fit: cover; 
+    border-radius: .5rem; 
+}
+
+.producto-detalles { padding-top: 1rem; }
+
+.producto-titulo {
+    font-size: 1.1rem;
+    margin-bottom: .5rem;
+}
+
+.producto-precio { 
+    font-size: 1.25rem;
+    font-weight: bold; 
+    color: var(--clr-red); 
+    margin-bottom: .5rem; 
+}
+
+.producto-stock {
+    font-size: .85rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.producto-agregar { 
+    width: 100%; 
+    background: var(--clr-red); 
+    color: white; 
+    border: 0; 
+    padding: .75rem; 
+    border-radius: .5rem; 
+    cursor: pointer; 
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.producto-agregar:hover:not(:disabled) { 
+    background: var(--clr-red-hover); 
+}
+
+/* --- SESIÓN USUARIO --- */
+.user-session {
+    margin-top: auto; /* Lo manda al fondo del aside */
+    padding-top: 2rem;
+    border-top: 1px solid var(--clr-gray);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-img-mini {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--clr-red);
+}
+
+.user-name-text {
+    font-size: 0.85rem;
+    max-width: 120px;
+}
+
+.boton-salir {
+    background: none;
+    border: 0;
+    color: var(--clr-red);
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-align: left;
+    padding: 0;
+    margin-top: 2px;
+}
+
+/* --- CARRITO --- */
+.carrito-producto { 
+    display: grid; 
+    grid-template-columns: 80px 2fr 1fr 1fr 1fr 0.5fr; 
+    gap: 1rem;
+    align-items: center; 
+    background: var(--clr-card); 
+    padding: 1rem; 
+    margin-bottom: 1rem; 
+    border-radius: 1rem; 
+}
+
+.carrito-producto-imagen { width: 100%; border-radius: .5rem; }
+
+.carrito-acciones { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1.5rem; 
+    background: #000; 
+    border-radius: 1rem; 
+    margin-top: 2rem;
+}
+
+.carrito-acciones-comprar {
+    background: var(--clr-red);
+    color: white;
+    border: 0;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- UTILS --- */
+.disabled { display: none !important; }
+.texto-agotado { color: #ff4d4d; font-weight: bold; }
+.boton-deshabilitado { background-color: #555 !important; cursor: not-allowed; opacity: 0.6; }
+
+/* Responsive básico para tablets */
+@media (max-width: 800px) {
+    .wrapper { grid-template-columns: 1fr; }
+    aside { height: auto; position: relative; }
+    .carrito-producto { grid-template-columns: 1fr 1fr; }
+}
+/* Estilos para el botón de Vaciar Carrito */
+.carrito-acciones-vaciar {
+    background-color: transparent; /* Fondo transparente */
+    color: #ddd; /* Texto en gris claro */
+    border: 2px solid #ddd; /* Borde gris */
+    border-radius: 2rem; /* Bordes redondeados */
+    padding: 10px 20px; /* Relleno */
+    font-weight: bold; /* Negrita */
+    cursor: pointer; /* Mano al pasar */
+    transition: all .2s ease-in-out; /* Animación */
+    font-family: 'Poppins', sans-serif; /* Tu tipografía */
+    text-transform: uppercase; /* Todo mayúsculas para más fuerza */
+    font-size: 0.8rem; /* Un poco más chico */
+}
+
+.carrito-acciones-vaciar:hover {
+    background-color: #ddd; /* Fondo gris al pasar */
+    color: #1a1a1a; /* Texto oscuro al pasar */
+    border-color: #ddd; /* El borde no cambia */
+}/* Estilos para el tacho de basura */
+.carrito-producto-eliminar {
+    background-color: transparent; /* Quitamos fondo */
+    border: 0; /* Quitamos borde */
+    color: #888; /* Color inicial del icono (gris) */
+    font-size: 1.5rem; /* Icono grande y legible */
+    cursor: pointer; /* Mano */
+    transition: color .2s ease; /* Animación de color */
+    padding: 0; /* Quitamos relleno */
+    margin-left: 10px; /* Un poco de separación */
+}
+
+.carrito-producto-eliminar:hover {
+    color: #e61e1e; /* Rojo intenso al pasar (color de la marca) */
+}
+/* Estilos para la zona de total y compra */
+.carrito-acciones-derecha {
+    display: flex;
+    flex-direction: column; /* Apilados */
+    align-items: flex-end; /* Alineados a la derecha */
+    gap: 15px; /* Separación entre total y botón */
+}
+
+.carrito-acciones-total {
+    display: flex; /* Total y precio uno al lado del otro */
+    gap: 15px; /* Más aire entre 'Total' y el precio */
+    color: #ddd; /* Texto gris claro */
+    font-family: 'Poppins', sans-serif;
+}
+
+.carrito-acciones-total p {
+    margin: 0; /* Limpiar márgenes */
+}
+
+.carrito-acciones-total p:last-child {
+    font-size: 1.5rem; /* El precio grande */
+    font-weight: bold; /* Negrita */
+    color: #fff; /* Precio en blanco */
+}
+
+/* Estilos para el botón de Comprar (El pulido final) */
+.carrito-acciones-comprar {
+    background-color: #e61e1e; /* Rojo intenso */
+    color: #fff; /* Texto blanco */
+    border: 0; /* Sin borde */
+    border-radius: 2rem; /* Bordes redondeados */
+    padding: 15px 30px; /* Relleno grande y cómodo */
+    font-size: 1rem; /* Texto de tamaño normal */
+    font-weight: bold; /* Negrita */
+    cursor: pointer; /* Mano */
+    text-transform: uppercase; /* Mayúsculas */
+    transition: all .2s ease-in-out; /* Animación */
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra para que flote */
+}
+
+.carrito-acciones-comprar:hover {
+    background-color: #b31414; /* Rojo más oscuro al pasar */
+    transform: translateY(-2px); /* Se mueve hacia arriba un poco */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5); /* Sombra más grande */
+}
+
+.carrito-acciones-comprar:active {
+    transform: translateY(1px); /* Efecto de 'presionado' */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Sombra más chica */
+}
