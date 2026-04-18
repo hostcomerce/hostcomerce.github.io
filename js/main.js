@@ -1,5 +1,5 @@
 //** --- CONFIGURACIÓN --- **/
-const urlAPI = "https://script.google.com/macros/s/AKfycbyyu0BpI2mJaXqCFfXWv_Z77eB7KBbSmol_DsBgQSjc9iaTxrZ_NwfIk6vxHIM7f74WBg/exec"; // REEMPLAZA ESTO
+const urlAPI = "https://script.google.com/macros/s/AKfycby2i7U8zchyJb0sF1kZHyFOPqMmmLkqIrtbihkpmr3hFifArMLfqhG5PTDLoMHSgm6-UA/exec"; // REEMPLAZA ESTO
 
 let productos = [];
 const contenedorProductos = document.querySelector("#contenedor-productos");
