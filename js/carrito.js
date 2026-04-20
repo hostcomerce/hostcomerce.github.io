@@ -1,7 +1,7 @@
 /** --- VARIABLES Y ESTADO --- **/
 let productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
 // URL de tu ÚLTIMA implementación (asegurate de que termine en /exec)
-const urlAPI = "https://script.google.com/macros/s/AKfycbxJMhbw7p8rDsXC0TU-H88hzk01xDzl-yDo6a3ZFI5Vh-B3Wj0V3SgVeBCHwi3TL8Zyog/exec";
+const urlAPI = "https://script.google.com/macros/s/AKfycbypJpLwH6uFyGJD_84tzB07Hploha9yydRWtgv9zsorbB1Pzg193s4mgBAJyKD8l1G28w/exec";
 
 // Referencias al DOM
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
